@@ -1,0 +1,169 @@
+/* Dark Navy Blue Streaming Theme */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #0b132b;
+  color: #ffffff;
+}
+
+/* App Container & Content Spacing Fix */
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  padding-top: 80px; /* Pushes content down so the navbar doesn't cover "My StreamList" */
+}
+
+/* Page Container (Matches Week 1 Card Layout) */
+.page-container {
+  background-color: #1c2541;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #3a506b;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Navigation System */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1c2541;
+  padding: 15px 30px;
+  border-radius: 8px;
+  border-bottom: 2px solid #3a86ff;
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #48cae4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 15px;
+  margin-left: 20px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: 0.2s;
+}
+
+.nav-links button:hover, .nav-links button.active {
+  color: #3a86ff;
+  border-bottom: 2px solid #3a86ff;
+}
+
+/* Input Form Section */
+.input-card {
+  background-color: #1c2541;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #3a506b;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.input-field {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #3a506b;
+  background-color: #0b132b;
+  color: #fff;
+  font-size: 15px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #3a86ff;
+}
+
+.btn-add, .btn-submit {
+  background-color: #3a86ff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-add:hover, .btn-submit:hover {
+  background-color: #2563eb;
+}
+
+/* Listed User Events / Movies */
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1c2541;
+  padding: 15px 20px;
+  border-radius: 6px;
+  border-left: 4px solid #3a86ff;
+}
+
+.event-card.completed {
+  border-left-color: #4ade80;
+  opacity: 0.6;
+}
+
+.event-card.completed .event-text {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.event-text {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: none;
+  border: 1px solid #3a506b;
+  border-radius: 4px;
+  color: #94a3b8;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  color: #fff;
+  background-color: #3a506b;
+}
+
+.icon-btn.complete-btn:hover { color: #4ade80; }
+.icon-btn.delete-btn:hover { color: #f87171; }
