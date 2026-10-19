@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function StreamList() {
   const [inputText, setInputText] = useState('');
-  const [streamList, setStreamList] = useState([
-    { id: 1, title: 'Interstellar', completed: false }
-  ]);
+  
+  // Initialize streamList from localStorage, or fall back to default if empty
+  const [streamList, setStreamList] = useState(() => {
+    const savedList = localStorage.getItem('streamList');
+    return savedList ? JSON.parse(savedList) : [
+      { id: 1, title: 'Interstellar', completed: false }
+    ];
+  });
+
+  // Save to localStorage whenever streamList changes
+  useEffect(() => {
+    localStorage.setItem('streamList', JSON.stringify(streamList));
+  }, [streamList]);
 
   // Edit State Management
   const [editingId, setEditingId] = useState(null);
