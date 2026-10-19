@@ -1,29 +1,41 @@
 /* Dark Navy Blue Streaming Theme */
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
   background-color: #0b132b;
   color: #ffffff;
+  overflow-x: hidden;
 }
 
-/* App Container & Content Spacing Fix */
+* {
+  box-sizing: border-box;
+}
+
+/* App Container Spacing Fix - Full Width Edge-to-Edge */
 .app-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #0b132b;
 }
 
 .content {
-  padding-top: 80px; /* Pushes content down so the navbar doesn't cover "My StreamList" */
+  width: 100%;
+  padding-top: 80px; /* Pushes content down so the navbar doesn't cover elements */
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
-/* Page Container (Matches Week 1 Card Layout) */
+/* Page Container (Full width layout flexibility) */
 .page-container {
   background-color: #1c2541;
   padding: 30px;
   border-radius: 8px;
   border: 1px solid #3a506b;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  width: 100%;
 }
 
 /* Navigation System */
@@ -33,9 +45,8 @@ body {
   align-items: center;
   background-color: #1c2541;
   padding: 15px 30px;
-  border-radius: 8px;
   border-bottom: 2px solid #3a86ff;
-  margin-bottom: 30px;
+  width: 100%;
 }
 
 .logo {
