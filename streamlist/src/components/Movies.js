@@ -48,10 +48,33 @@ function Movies() {
       });
   }, [selectedGenre, searchQuery]);
 
+  // Handle adding a movie to local storage cart
+  const handleAddToCart = (movie) => {
+    const existingCart = JSON.parse(localStorage.getItem('cart_items')) || [];
+    
+    // Prevent duplicate entries of the exact same movie
+    const isAlreadyInCart = existingCart.some((item) => item.id === movie.id);
+    if (isAlreadyInCart) {
+      alert(`"${movie.title}" is already in your cart!`);
+      return;
+    }
+
+    const cartItem = {
+      id: movie.id,
+      title: movie.title,
+      price: 4.99,
+      poster_path: movie.poster_path
+    };
+
+    const updatedCart = [...existingCart, cartItem];
+    localStorage.setItem('cart_items', JSON.stringify(updatedCart));
+    alert(`"${movie.title}" has been successfully added to your cart!`);
+  };
+
   return (
     <div style={{ 
       margin: 0,
-      padding: '2rem 4vw', // Fluid horizontal padding so it touches the screen edges smoothly
+      padding: '2.5rem 4vw', 
       color: '#ffffff', 
       backgroundColor: '#050811', 
       minHeight: 'calc(100vh - 60px)',
@@ -148,24 +171,42 @@ function Movies() {
                 transition: 'transform 0.2s ease',
               }}
             >
-              {movie.poster_path ? (
-                <img 
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                  alt={movie.title}
-                  style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '6px', marginBottom: '0.75rem' }}
-                />
-              ) : (
-                <div style={{ height: '300px', backgroundColor: '#374151', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.75rem', borderRadius: '6px', color: '#9ca3af' }}>
-                  No Image Available
-                </div>
-              )}
-
               <div>
-                <h3 style={{ fontSize: '1rem', marginBottom: '0.4rem', color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {movie.poster_path ? (
+                  <img 
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                    alt={movie.title}
+                    style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '6px', marginBottom: '0.75rem' }}
+                  />
+                ) : (
+                  <div style={{ height: '300px', backgroundColor: '#374151', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.75rem', borderRadius: '6px', color: '#9ca3af' }}>
+                    No Image Available
+                  </div>
+                )}
+
+                <h3 style={{ fontSize: '1rem', marginBottom: '0.2rem', color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {movie.title}
                 </h3>
-                <p style={{ fontSize: '0.85rem', color: '#9ca3af' }}>Release: {movie.release_date || 'TBA'}</p>
+                <p style={{ fontSize: '0.85rem', color: '#9ca3af', marginBottom: '0.75rem' }}>Release: {movie.release_date || 'TBA'}</p>
               </div>
+
+              <button
+                onClick={() => handleAddToCart(movie)}
+                style={{
+                  backgroundColor: '#3b82f6',
+                  color: '#ffffff',
+                  border: 'none',
+                  padding: '0.6rem 1rem',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  fontSize: '0.85rem',
+                  width: '100%',
+                  transition: 'background-color 0.2s'
+                }}
+              >
+                Add to Cart ($4.99)
+              </button>
             </div>
           ))}
         </div>
