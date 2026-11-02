@@ -176,7 +176,7 @@ function StreamList() {
         pointerEvents: 'none'
       }}></div>
 
-      {/* --- CONDITIONAL RENDER: DYNAMIC LOGIN OR STREAMLIST DASHBOARD --- */}
+      {/* --- EXCLUSIVE GOOGLE OAUTH LOGIN BARRIER (When Not Logged In) --- */}
       {!isLoggedIn ? (
         <div style={{
           position: 'relative',
@@ -191,15 +191,14 @@ function StreamList() {
           textAlign: 'center',
           boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '15px' }}>
-            <span className="material-icons" style={{ color: '#3b82f6', fontSize: '2.5rem' }}>play_circle</span>
-            <h1 style={{ fontSize: '1.8rem', color: '#ffffff', margin: 0 }}>EZTechMovie</h1>
-          </div>
+          <h1 style={{ fontSize: '1.8rem', color: '#ffffff', marginBottom: '10px', fontWeight: 'bold' }}>
+            Welcome to EZTechMovie
+          </h1>
           <p style={{ color: '#9ca3af', marginBottom: '20px', fontSize: '0.95rem', lineHeight: '1.5' }}>
-            Sign in with Google to access your personalized StreamList.
+            Please sign in with Google to access the application.
           </p>
 
-          <form onSubmit={handleGoogleSignIn} style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
+          <form onSubmit={handleGoogleSignIn} style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '10px' }}>
             <input
               type="text"
               placeholder="Enter your full name..."
@@ -263,6 +262,7 @@ function StreamList() {
           </form>
         </div>
       ) : (
+        /* --- MAIN STREAMLIST DASHBOARD (Unlocked Upon Verification) --- */
         <div style={{ 
           position: 'relative',
           zIndex: 2,
